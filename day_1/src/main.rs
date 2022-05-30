@@ -18,8 +18,23 @@ fn main() {
         .collect();
 
     let windows = input.windows(2);
-    
+
     let n_increasing = windows.filter(|x| x[1] > x[0]).count();
-        
-    println!("There are {} increasing measurements.", n_increasing)
+
+    println!(
+        "(part 1) There are {} increasing measurements.",
+        n_increasing
+    );
+
+    let windows = input.windows(3).collect::<Vec<&[usize]>>();
+    let windows = windows.windows(2);
+
+    let n_increasing = windows
+        .filter(|x| x[1].iter().sum::<usize>() > x[0].iter().sum())
+        .count();
+
+    println!(
+        "(part 2) There are {} increasing measurements.",
+        n_increasing
+    );
 }
